@@ -8,11 +8,11 @@ namespace SOS.Models
     public class DailyPlan
     {
         public int Id {get; set;}
-        public ICollection<Room> Rooms {get; set;}
+        public ICollection<DailyRoomPlan> DailyRoomPlans {get; set;}
         
         public DailyPlan ()
         {
-            Rooms = new Collection<Room>();
+            DailyRoomPlans = new Collection<DailyRoomPlan>();
         }
     }
 }
