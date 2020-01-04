@@ -10,7 +10,7 @@ using SOS.Persistance;
 namespace SOS.Migrations
 {
     [DbContext(typeof(SosDBContext))]
-    [Migration("20200103214237_InitialModel")]
+    [Migration("20200104101538_InitialModel")]
     partial class InitialModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace SOS.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("SOS.Models.DailyPlanLesson", b =>
+            modelBuilder.Entity("SOS.Models.DailyPlan", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,7 +29,7 @@ namespace SOS.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DailyPlanLessons");
+                    b.ToTable("DailyPlans");
                 });
 
             modelBuilder.Entity("SOS.Models.Lesson", b =>
@@ -42,7 +42,7 @@ namespace SOS.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Lesson");
+                    b.ToTable("Lessons");
                 });
 
             modelBuilder.Entity("SOS.Models.Room", b =>
@@ -51,7 +51,7 @@ namespace SOS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("DailyPlanLessonId");
+                    b.Property<int?>("DailyPlanId");
 
                     b.Property<int?>("Lesson01Id");
 
@@ -73,11 +73,13 @@ namespace SOS.Migrations
 
                     b.Property<int?>("Lesson10Id");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DailyPlanLessonId");
+                    b.HasIndex("DailyPlanId");
 
                     b.HasIndex("Lesson01Id");
 
@@ -99,14 +101,14 @@ namespace SOS.Migrations
 
                     b.HasIndex("Lesson10Id");
 
-                    b.ToTable("Room");
+                    b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("SOS.Models.Room", b =>
                 {
-                    b.HasOne("SOS.Models.DailyPlanLesson")
+                    b.HasOne("SOS.Models.DailyPlan")
                         .WithMany("Rooms")
-                        .HasForeignKey("DailyPlanLessonId");
+                        .HasForeignKey("DailyPlanId");
 
                     b.HasOne("SOS.Models.Lesson", "Lesson01")
                         .WithMany()

@@ -8,7 +8,7 @@ namespace SOS.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "DailyPlanLessons",
+                name: "DailyPlans",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -16,11 +16,11 @@ namespace SOS.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DailyPlanLessons", x => x.Id);
+                    table.PrimaryKey("PK_DailyPlans", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Lesson",
+                name: "Lessons",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -29,16 +29,16 @@ namespace SOS.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Lesson", x => x.Id);
+                    table.PrimaryKey("PK_Lessons", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Room",
+                name: "Rooms",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 255, nullable: false),
                     Lesson01Id = table.Column<int>(nullable: true),
                     Lesson02Id = table.Column<int>(nullable: true),
                     Lesson03Id = table.Column<int>(nullable: true),
@@ -49,145 +49,145 @@ namespace SOS.Migrations
                     Lesson08Id = table.Column<int>(nullable: true),
                     Lesson09Id = table.Column<int>(nullable: true),
                     Lesson10Id = table.Column<int>(nullable: true),
-                    DailyPlanLessonId = table.Column<int>(nullable: true)
+                    DailyPlanId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Room", x => x.Id);
+                    table.PrimaryKey("PK_Rooms", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Room_DailyPlanLessons_DailyPlanLessonId",
-                        column: x => x.DailyPlanLessonId,
-                        principalTable: "DailyPlanLessons",
+                        name: "FK_Rooms_DailyPlans_DailyPlanId",
+                        column: x => x.DailyPlanId,
+                        principalTable: "DailyPlans",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Room_Lesson_Lesson01Id",
+                        name: "FK_Rooms_Lessons_Lesson01Id",
                         column: x => x.Lesson01Id,
-                        principalTable: "Lesson",
+                        principalTable: "Lessons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Room_Lesson_Lesson02Id",
+                        name: "FK_Rooms_Lessons_Lesson02Id",
                         column: x => x.Lesson02Id,
-                        principalTable: "Lesson",
+                        principalTable: "Lessons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Room_Lesson_Lesson03Id",
+                        name: "FK_Rooms_Lessons_Lesson03Id",
                         column: x => x.Lesson03Id,
-                        principalTable: "Lesson",
+                        principalTable: "Lessons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Room_Lesson_Lesson04Id",
+                        name: "FK_Rooms_Lessons_Lesson04Id",
                         column: x => x.Lesson04Id,
-                        principalTable: "Lesson",
+                        principalTable: "Lessons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Room_Lesson_Lesson05Id",
+                        name: "FK_Rooms_Lessons_Lesson05Id",
                         column: x => x.Lesson05Id,
-                        principalTable: "Lesson",
+                        principalTable: "Lessons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Room_Lesson_Lesson06Id",
+                        name: "FK_Rooms_Lessons_Lesson06Id",
                         column: x => x.Lesson06Id,
-                        principalTable: "Lesson",
+                        principalTable: "Lessons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Room_Lesson_Lesson07Id",
+                        name: "FK_Rooms_Lessons_Lesson07Id",
                         column: x => x.Lesson07Id,
-                        principalTable: "Lesson",
+                        principalTable: "Lessons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Room_Lesson_Lesson08Id",
+                        name: "FK_Rooms_Lessons_Lesson08Id",
                         column: x => x.Lesson08Id,
-                        principalTable: "Lesson",
+                        principalTable: "Lessons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Room_Lesson_Lesson09Id",
+                        name: "FK_Rooms_Lessons_Lesson09Id",
                         column: x => x.Lesson09Id,
-                        principalTable: "Lesson",
+                        principalTable: "Lessons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Room_Lesson_Lesson10Id",
+                        name: "FK_Rooms_Lessons_Lesson10Id",
                         column: x => x.Lesson10Id,
-                        principalTable: "Lesson",
+                        principalTable: "Lessons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room_DailyPlanLessonId",
-                table: "Room",
-                column: "DailyPlanLessonId");
+                name: "IX_Rooms_DailyPlanId",
+                table: "Rooms",
+                column: "DailyPlanId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room_Lesson01Id",
-                table: "Room",
+                name: "IX_Rooms_Lesson01Id",
+                table: "Rooms",
                 column: "Lesson01Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room_Lesson02Id",
-                table: "Room",
+                name: "IX_Rooms_Lesson02Id",
+                table: "Rooms",
                 column: "Lesson02Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room_Lesson03Id",
-                table: "Room",
+                name: "IX_Rooms_Lesson03Id",
+                table: "Rooms",
                 column: "Lesson03Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room_Lesson04Id",
-                table: "Room",
+                name: "IX_Rooms_Lesson04Id",
+                table: "Rooms",
                 column: "Lesson04Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room_Lesson05Id",
-                table: "Room",
+                name: "IX_Rooms_Lesson05Id",
+                table: "Rooms",
                 column: "Lesson05Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room_Lesson06Id",
-                table: "Room",
+                name: "IX_Rooms_Lesson06Id",
+                table: "Rooms",
                 column: "Lesson06Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room_Lesson07Id",
-                table: "Room",
+                name: "IX_Rooms_Lesson07Id",
+                table: "Rooms",
                 column: "Lesson07Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room_Lesson08Id",
-                table: "Room",
+                name: "IX_Rooms_Lesson08Id",
+                table: "Rooms",
                 column: "Lesson08Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room_Lesson09Id",
-                table: "Room",
+                name: "IX_Rooms_Lesson09Id",
+                table: "Rooms",
                 column: "Lesson09Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Room_Lesson10Id",
-                table: "Room",
+                name: "IX_Rooms_Lesson10Id",
+                table: "Rooms",
                 column: "Lesson10Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Room");
+                name: "Rooms");
 
             migrationBuilder.DropTable(
-                name: "DailyPlanLessons");
+                name: "DailyPlans");
 
             migrationBuilder.DropTable(
-                name: "Lesson");
+                name: "Lessons");
         }
     }
 }
