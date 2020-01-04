@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SOS.Models
 {
-    public class DailyPlanLesson
+    [Table("DailyPlans")]
+    public class DailyPlan
     {
         public int Id {get; set;}
         public ICollection<Room> Rooms {get; set;}
         
-        public DailyPlanLesson ()
+        public DailyPlan ()
         {
             Rooms = new Collection<Room>();
         }

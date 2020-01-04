@@ -10,6 +10,6 @@ namespace SOS.Persistance
              
          }
 
-         public DbSet<DailyPlanLesson> DailyPlanLessons {get; set;}
+         public DbSet<DailyPlan> DailyPlanLessons {get; set;}
     }
 }
