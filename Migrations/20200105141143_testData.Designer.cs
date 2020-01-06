@@ -10,8 +10,8 @@ using SOS.Persistance;
 namespace SOS.Migrations
 {
     [DbContext(typeof(SosDBContext))]
-    [Migration("20200104180408_nextStep")]
-    partial class nextStep
+    [Migration("20200105141143_testData")]
+    partial class testData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,6 +42,10 @@ namespace SOS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("DayNo");
+
+                    b.Property<int>("DayNoInWeek");
+
                     b.Property<int?>("WeeklyPlanId");
 
                     b.HasKey("Id");
@@ -49,6 +53,65 @@ namespace SOS.Migrations
                     b.HasIndex("WeeklyPlanId");
 
                     b.ToTable("DailyPlans");
+                });
+
+            modelBuilder.Entity("SOS.Models.DailyRoomPlan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("DailyPlanId");
+
+                    b.Property<int?>("Lesson01Id");
+
+                    b.Property<int?>("Lesson02Id");
+
+                    b.Property<int?>("Lesson03Id");
+
+                    b.Property<int?>("Lesson04Id");
+
+                    b.Property<int?>("Lesson05Id");
+
+                    b.Property<int?>("Lesson06Id");
+
+                    b.Property<int?>("Lesson07Id");
+
+                    b.Property<int?>("Lesson08Id");
+
+                    b.Property<int?>("Lesson09Id");
+
+                    b.Property<int?>("Lesson10Id");
+
+                    b.Property<int?>("RoomId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DailyPlanId");
+
+                    b.HasIndex("Lesson01Id");
+
+                    b.HasIndex("Lesson02Id");
+
+                    b.HasIndex("Lesson03Id");
+
+                    b.HasIndex("Lesson04Id");
+
+                    b.HasIndex("Lesson05Id");
+
+                    b.HasIndex("Lesson06Id");
+
+                    b.HasIndex("Lesson07Id");
+
+                    b.HasIndex("Lesson08Id");
+
+                    b.HasIndex("Lesson09Id");
+
+                    b.HasIndex("Lesson10Id");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("DailyRoomPlans");
                 });
 
             modelBuilder.Entity("SOS.Models.Instructor", b =>
@@ -89,6 +152,10 @@ namespace SOS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
                     b.Property<int?>("YearlyPlanId");
 
                     b.HasKey("Id");
@@ -104,55 +171,11 @@ namespace SOS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("DailyPlanId");
-
-                    b.Property<int?>("Lesson01Id");
-
-                    b.Property<int?>("Lesson02Id");
-
-                    b.Property<int?>("Lesson03Id");
-
-                    b.Property<int?>("Lesson04Id");
-
-                    b.Property<int?>("Lesson05Id");
-
-                    b.Property<int?>("Lesson06Id");
-
-                    b.Property<int?>("Lesson07Id");
-
-                    b.Property<int?>("Lesson08Id");
-
-                    b.Property<int?>("Lesson09Id");
-
-                    b.Property<int?>("Lesson10Id");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DailyPlanId");
-
-                    b.HasIndex("Lesson01Id");
-
-                    b.HasIndex("Lesson02Id");
-
-                    b.HasIndex("Lesson03Id");
-
-                    b.HasIndex("Lesson04Id");
-
-                    b.HasIndex("Lesson05Id");
-
-                    b.HasIndex("Lesson06Id");
-
-                    b.HasIndex("Lesson07Id");
-
-                    b.HasIndex("Lesson08Id");
-
-                    b.HasIndex("Lesson09Id");
-
-                    b.HasIndex("Lesson10Id");
 
                     b.ToTable("Rooms");
                 });
@@ -195,6 +218,10 @@ namespace SOS.Migrations
 
                     b.Property<int?>("MonthlyPlanId");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
+
                     b.HasKey("Id");
 
                     b.HasIndex("MonthlyPlanId");
@@ -207,6 +234,10 @@ namespace SOS.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255);
 
                     b.Property<int?>("ScheduleId");
 
@@ -224,31 +255,10 @@ namespace SOS.Migrations
                         .HasForeignKey("WeeklyPlanId");
                 });
 
-            modelBuilder.Entity("SOS.Models.Instructor", b =>
-                {
-                    b.HasOne("SOS.Models.Course")
-                        .WithMany("Instructors")
-                        .HasForeignKey("CourseId");
-                });
-
-            modelBuilder.Entity("SOS.Models.Lesson", b =>
-                {
-                    b.HasOne("SOS.Models.Course")
-                        .WithMany("Lessons")
-                        .HasForeignKey("CourseId");
-                });
-
-            modelBuilder.Entity("SOS.Models.MonthlyPlan", b =>
-                {
-                    b.HasOne("SOS.Models.YearlyPlan")
-                        .WithMany("MonthlyPlans")
-                        .HasForeignKey("YearlyPlanId");
-                });
-
-            modelBuilder.Entity("SOS.Models.Room", b =>
+            modelBuilder.Entity("SOS.Models.DailyRoomPlan", b =>
                 {
                     b.HasOne("SOS.Models.DailyPlan")
-                        .WithMany("Rooms")
+                        .WithMany("DailyRoomPlans")
                         .HasForeignKey("DailyPlanId");
 
                     b.HasOne("SOS.Models.Lesson", "Lesson01")
@@ -290,6 +300,31 @@ namespace SOS.Migrations
                     b.HasOne("SOS.Models.Lesson", "Lesson10")
                         .WithMany()
                         .HasForeignKey("Lesson10Id");
+
+                    b.HasOne("SOS.Models.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId");
+                });
+
+            modelBuilder.Entity("SOS.Models.Instructor", b =>
+                {
+                    b.HasOne("SOS.Models.Course")
+                        .WithMany("Instructors")
+                        .HasForeignKey("CourseId");
+                });
+
+            modelBuilder.Entity("SOS.Models.Lesson", b =>
+                {
+                    b.HasOne("SOS.Models.Course")
+                        .WithMany("Lessons")
+                        .HasForeignKey("CourseId");
+                });
+
+            modelBuilder.Entity("SOS.Models.MonthlyPlan", b =>
+                {
+                    b.HasOne("SOS.Models.YearlyPlan")
+                        .WithMany("MonthlyPlans")
+                        .HasForeignKey("YearlyPlanId");
                 });
 
             modelBuilder.Entity("SOS.Models.Student", b =>

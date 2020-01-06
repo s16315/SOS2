@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SOS.Models
@@ -8,6 +9,10 @@ namespace SOS.Models
     public class DailyPlan
     {
         public int Id {get; set;}
+        [Required]
+        public int DayNoInWeek {get; set;}
+        [Required]
+        public int DayNo {get; set;}         
         public ICollection<DailyRoomPlan> DailyRoomPlans {get; set;}
         
         public DailyPlan ()
