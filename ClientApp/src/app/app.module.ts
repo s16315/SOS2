@@ -3,30 +3,22 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarSchoolComponent } from './navbar-school/navbar-school.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { RoomsFormComponent } from './rooms-form/rooms-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddRoomComponent } from './components/add-room/add-room.component';
+import { EditRoomComponent } from './components/edit-room/edit-room.component';
+import { RoomsListComponent } from './components/rooms-list/rooms-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarSchoolComponent,
-    RoomsFormComponent
+    AddRoomComponent,
+    EditRoomComponent,
+    RoomsListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
