@@ -10,7 +10,7 @@ using SOS.Persistance;
 namespace SOS.Migrations
 {
     [DbContext(typeof(SosDBContext))]
-    [Migration("20200117171827_many")]
+    [Migration("20200117172359_many")]
     partial class many
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace SOS.Migrations
 
                     b.Property<int?>("LanguageId");
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -56,7 +56,7 @@ namespace SOS.Migrations
 
                     b.Property<int>("DayNoInWeek");
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.Property<int?>("WeeklyPlanId");
 
@@ -75,7 +75,7 @@ namespace SOS.Migrations
 
                     b.Property<int?>("DailyPlanId");
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.Property<int?>("Lesson01Id");
 
@@ -136,7 +136,7 @@ namespace SOS.Migrations
 
                     b.Property<int>("LanguageId");
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.Property<string>("Login")
                         .IsRequired()
@@ -159,7 +159,7 @@ namespace SOS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -178,7 +178,7 @@ namespace SOS.Migrations
 
                     b.Property<int?>("CourseId");
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.Property<bool>("Replacement");
 
@@ -195,7 +195,7 @@ namespace SOS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -224,7 +224,7 @@ namespace SOS.Migrations
                         .IsRequired()
                         .HasMaxLength(255);
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.HasKey("Id");
 
@@ -237,7 +237,7 @@ namespace SOS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -254,7 +254,7 @@ namespace SOS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -271,7 +271,7 @@ namespace SOS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.Property<string>("Login")
                         .IsRequired()
@@ -294,7 +294,7 @@ namespace SOS.Migrations
 
                     b.Property<int>("Id");
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.HasKey("StudentId", "CourseId");
 
@@ -311,7 +311,7 @@ namespace SOS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.Property<int?>("MonthlyPlanId");
 
@@ -332,7 +332,7 @@ namespace SOS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("LastUpdate");
+                    b.Property<DateTime?>("LastUpdate");
 
                     b.Property<string>("Name")
                         .IsRequired()

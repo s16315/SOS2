@@ -143,8 +143,7 @@ namespace SOS.Migrations
             migrationBuilder.AddColumn<DateTime>(
                 name: "LastUpdate",
                 table: "Rooms",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "CourseId",
@@ -154,8 +153,7 @@ namespace SOS.Migrations
             migrationBuilder.AddColumn<DateTime>(
                 name: "LastUpdate",
                 table: "Lessons",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "DayNo",
@@ -172,8 +170,7 @@ namespace SOS.Migrations
             migrationBuilder.AddColumn<DateTime>(
                 name: "LastUpdate",
                 table: "DailyPlans",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "WeeklyPlanId",
@@ -186,7 +183,7 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: true),
                     RoomId1 = table.Column<int>(nullable: true),
                     Lesson01Id = table.Column<int>(nullable: true),
                     Lesson02Id = table.Column<int>(nullable: true),
@@ -283,7 +280,7 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
@@ -297,7 +294,7 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: true),
                     FirstName = table.Column<string>(maxLength: 255, nullable: false),
                     LastName = table.Column<string>(maxLength: 255, nullable: false)
                 },
@@ -312,7 +309,7 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
@@ -326,7 +323,7 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: true),
                     Login = table.Column<string>(maxLength: 255, nullable: false),
                     PersonId = table.Column<int>(nullable: false),
                     LanguageId = table.Column<int>(nullable: false)
@@ -354,7 +351,7 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: true),
                     Login = table.Column<string>(maxLength: 255, nullable: false),
                     PersonId = table.Column<int>(nullable: false)
                 },
@@ -375,7 +372,7 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     ScheduleId = table.Column<int>(nullable: true)
                 },
@@ -396,7 +393,7 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     InstructorId = table.Column<int>(nullable: true),
                     LanguageId = table.Column<int>(nullable: true)
@@ -424,7 +421,7 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     YearlyPlanId = table.Column<int>(nullable: true)
                 },
@@ -446,7 +443,7 @@ namespace SOS.Migrations
                     StudentId = table.Column<int>(nullable: false),
                     CourseId = table.Column<int>(nullable: false),
                     Id = table.Column<int>(nullable: false),
-                    LastUpdate = table.Column<DateTime>(nullable: false)
+                    LastUpdate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -464,6 +461,7 @@ namespace SOS.Migrations
                         principalTable: "Students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    
                 });
 
             migrationBuilder.CreateTable(
@@ -472,7 +470,7 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     MonthlyPlanId = table.Column<int>(nullable: true)
                 },
@@ -617,6 +615,12 @@ namespace SOS.Migrations
                 principalTable: "Courses",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
+            
+            InitialData.addCleanYear(migrationBuilder, 2020, 3, 366);
+            InitialData.addRooms(migrationBuilder);
+            InitialData.addLanguages(migrationBuilder);
+            InitialData.addInstructors(migrationBuilder);
+            InitialData.addStudents(migrationBuilder);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
