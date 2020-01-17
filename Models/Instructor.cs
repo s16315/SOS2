@@ -9,8 +9,10 @@ namespace SOS.Models
         [Required]
         [StringLength(255)]
         public string Login {get; set;}
+        [ForeignKey("Persons")]
         public int PersonId {get; set;}
         public Person Person {get; set;}
+        [ForeignKey("Languages")]
         public int LanguageId {get; set;}
         public Language Language {get; set;}
     }

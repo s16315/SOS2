@@ -10,6 +10,7 @@ namespace SOS.Models
         [Required]
         [StringLength(255)]
         public string Login {get; set;}
+        [ForeignKey("Persons")]
         public int PersonId {get; set;}
         public Person Person {get; set;}
         public ICollection<StudentCourse> StudentCourses {get; set;}

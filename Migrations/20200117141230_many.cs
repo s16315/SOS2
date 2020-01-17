@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SOS.Migrations
 {
-    public partial class testData : Migration
+    public partial class many : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -139,10 +140,22 @@ namespace SOS.Migrations
                 name: "Lesson10Id",
                 table: "Rooms");
 
+            migrationBuilder.AddColumn<DateTime>(
+                name: "LastUpdate",
+                table: "Rooms",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+
             migrationBuilder.AddColumn<int>(
                 name: "CourseId",
                 table: "Lessons",
                 nullable: true);
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "LastUpdate",
+                table: "Lessons",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<int>(
                 name: "DayNo",
@@ -156,23 +169,16 @@ namespace SOS.Migrations
                 nullable: false,
                 defaultValue: 0);
 
+            migrationBuilder.AddColumn<DateTime>(
+                name: "LastUpdate",
+                table: "DailyPlans",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+
             migrationBuilder.AddColumn<int>(
                 name: "WeeklyPlanId",
                 table: "DailyPlans",
                 nullable: true);
-
-            migrationBuilder.CreateTable(
-                name: "Courses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(maxLength: 255, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Courses", x => x.Id);
-                });
 
             migrationBuilder.CreateTable(
                 name: "DailyRoomPlans",
@@ -180,17 +186,18 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    RoomId = table.Column<int>(nullable: true),
-                    Lesson01Id = table.Column<int>(nullable: true),
-                    Lesson02Id = table.Column<int>(nullable: true),
-                    Lesson03Id = table.Column<int>(nullable: true),
-                    Lesson04Id = table.Column<int>(nullable: true),
-                    Lesson05Id = table.Column<int>(nullable: true),
-                    Lesson06Id = table.Column<int>(nullable: true),
-                    Lesson07Id = table.Column<int>(nullable: true),
-                    Lesson08Id = table.Column<int>(nullable: true),
-                    Lesson09Id = table.Column<int>(nullable: true),
-                    Lesson10Id = table.Column<int>(nullable: true),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    RoomId1 = table.Column<int>(nullable: true),
+                    Lesson01Id = table.Column<int>(nullable: false),
+                    Lesson02Id = table.Column<int>(nullable: false),
+                    Lesson03Id = table.Column<int>(nullable: false),
+                    Lesson04Id = table.Column<int>(nullable: false),
+                    Lesson05Id = table.Column<int>(nullable: false),
+                    Lesson06Id = table.Column<int>(nullable: false),
+                    Lesson07Id = table.Column<int>(nullable: false),
+                    Lesson08Id = table.Column<int>(nullable: false),
+                    Lesson09Id = table.Column<int>(nullable: false),
+                    Lesson10Id = table.Column<int>(nullable: false),
                     DailyPlanId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -207,67 +214,96 @@ namespace SOS.Migrations
                         column: x => x.Lesson01Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson02Id",
                         column: x => x.Lesson02Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson03Id",
                         column: x => x.Lesson03Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson04Id",
                         column: x => x.Lesson04Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson05Id",
                         column: x => x.Lesson05Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson06Id",
                         column: x => x.Lesson06Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson07Id",
                         column: x => x.Lesson07Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson08Id",
                         column: x => x.Lesson08Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson09Id",
                         column: x => x.Lesson09Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson10Id",
                         column: x => x.Lesson10Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DailyRoomPlans_Rooms_RoomId",
-                        column: x => x.RoomId,
+                        name: "FK_DailyRoomPlans_Rooms_RoomId1",
+                        column: x => x.RoomId1,
                         principalTable: "Rooms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Languages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Languages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Persons",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    FirstName = table.Column<string>(maxLength: 255, nullable: false),
+                    LastName = table.Column<string>(maxLength: 255, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Persons", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -276,6 +312,7 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false)
                 },
                 constraints: table =>
@@ -289,17 +326,26 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CourseId = table.Column<int>(nullable: true)
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    Login = table.Column<string>(maxLength: 255, nullable: false),
+                    PersonId = table.Column<int>(nullable: false),
+                    LanguageId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Instructors", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Instructors_Courses_CourseId",
-                        column: x => x.CourseId,
-                        principalTable: "Courses",
+                        name: "FK_Instructors_Languages_LanguageId",
+                        column: x => x.LanguageId,
+                        principalTable: "Languages",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Instructors_Persons_PersonId",
+                        column: x => x.PersonId,
+                        principalTable: "Persons",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -308,17 +354,19 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CourseId = table.Column<int>(nullable: true)
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    Login = table.Column<string>(maxLength: 255, nullable: false),
+                    PersonId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Students", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Students_Courses_CourseId",
-                        column: x => x.CourseId,
-                        principalTable: "Courses",
+                        name: "FK_Students_Persons_PersonId",
+                        column: x => x.PersonId,
+                        principalTable: "Persons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -327,6 +375,7 @@ namespace SOS.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     ScheduleId = table.Column<int>(nullable: true)
                 },
@@ -342,11 +391,40 @@ namespace SOS.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Courses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(maxLength: 255, nullable: false),
+                    InstructorId = table.Column<int>(nullable: false),
+                    LanguageId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Courses", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Courses_Instructors_InstructorId",
+                        column: x => x.InstructorId,
+                        principalTable: "Instructors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Courses_Languages_LanguageId",
+                        column: x => x.LanguageId,
+                        principalTable: "Languages",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MonthlyPlans",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     YearlyPlanId = table.Column<int>(nullable: true)
                 },
@@ -362,11 +440,39 @@ namespace SOS.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "StudentCourses",
+                columns: table => new
+                {
+                    StudentId = table.Column<int>(nullable: false),
+                    CourseId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false),
+                    LastUpdate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StudentCourses", x => new { x.StudentId, x.CourseId });
+                    table.UniqueConstraint("AK_StudentCourses_Id", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_StudentCourses_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_StudentCourses_Students_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "WeeklyPlans",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    LastUpdate = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
                     MonthlyPlanId = table.Column<int>(nullable: true)
                 },
@@ -390,6 +496,16 @@ namespace SOS.Migrations
                 name: "IX_DailyPlans_WeeklyPlanId",
                 table: "DailyPlans",
                 column: "WeeklyPlanId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Courses_InstructorId",
+                table: "Courses",
+                column: "InstructorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Courses_LanguageId",
+                table: "Courses",
+                column: "LanguageId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DailyRoomPlans_DailyPlanId",
@@ -447,14 +563,19 @@ namespace SOS.Migrations
                 column: "Lesson10Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DailyRoomPlans_RoomId",
+                name: "IX_DailyRoomPlans_RoomId1",
                 table: "DailyRoomPlans",
-                column: "RoomId");
+                column: "RoomId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Instructors_CourseId",
+                name: "IX_Instructors_LanguageId",
                 table: "Instructors",
-                column: "CourseId");
+                column: "LanguageId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Instructors_PersonId",
+                table: "Instructors",
+                column: "PersonId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MonthlyPlans_YearlyPlanId",
@@ -462,9 +583,14 @@ namespace SOS.Migrations
                 column: "YearlyPlanId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Students_CourseId",
-                table: "Students",
+                name: "IX_StudentCourses_CourseId",
+                table: "StudentCourses",
                 column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Students_PersonId",
+                table: "Students",
+                column: "PersonId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_WeeklyPlans_MonthlyPlanId",
@@ -491,8 +617,6 @@ namespace SOS.Migrations
                 principalTable: "Courses",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
-                InitialData.addCleanYear(migrationBuilder, 2020, 3, 366);
-                InitialData.addRooms(migrationBuilder);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -509,10 +633,7 @@ namespace SOS.Migrations
                 name: "DailyRoomPlans");
 
             migrationBuilder.DropTable(
-                name: "Instructors");
-
-            migrationBuilder.DropTable(
-                name: "Students");
+                name: "StudentCourses");
 
             migrationBuilder.DropTable(
                 name: "WeeklyPlans");
@@ -521,10 +642,22 @@ namespace SOS.Migrations
                 name: "Courses");
 
             migrationBuilder.DropTable(
+                name: "Students");
+
+            migrationBuilder.DropTable(
                 name: "MonthlyPlans");
 
             migrationBuilder.DropTable(
+                name: "Instructors");
+
+            migrationBuilder.DropTable(
                 name: "YearlyPlans");
+
+            migrationBuilder.DropTable(
+                name: "Languages");
+
+            migrationBuilder.DropTable(
+                name: "Persons");
 
             migrationBuilder.DropTable(
                 name: "Schedules");
@@ -538,7 +671,15 @@ namespace SOS.Migrations
                 table: "DailyPlans");
 
             migrationBuilder.DropColumn(
+                name: "LastUpdate",
+                table: "Rooms");
+
+            migrationBuilder.DropColumn(
                 name: "CourseId",
+                table: "Lessons");
+
+            migrationBuilder.DropColumn(
+                name: "LastUpdate",
                 table: "Lessons");
 
             migrationBuilder.DropColumn(
@@ -547,6 +688,10 @@ namespace SOS.Migrations
 
             migrationBuilder.DropColumn(
                 name: "DayNoInWeek",
+                table: "DailyPlans");
+
+            migrationBuilder.DropColumn(
+                name: "LastUpdate",
                 table: "DailyPlans");
 
             migrationBuilder.DropColumn(
