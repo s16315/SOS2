@@ -1,11 +1,17 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SOS.Models
 {
     [Table("Students")]
-    public class Student
+    public class Student : Entity
     {
-        public int Id {get; set;}
+        [Required]
+        [StringLength(255)]
+        public string Login {get; set;}
+        public int PersonId {get; set;}
+        public Person Person {get; set;}
+        public ICollection<StudentCourse> StudentCourses {get; set;}
     }
 }

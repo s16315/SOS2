@@ -6,20 +6,20 @@ import { MatSidenav } from '@angular/material/sidenav';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   opened = true;
+  navTitle = 'System obsługi szkół';
   @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
 
-  // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit() {
     console.log(window.innerWidth);
-    if (window.innerWidth < 768) {
+/*    if (window.innerWidth < 768) {
       this.sidenav.fixedTopGap = 55;
       this.opened = false;
     } else {
       this.sidenav.fixedTopGap = 55;
       this.opened = true;
-    }
+    }*/
   }
 
   @HostListener('window:resize', ['$event'])

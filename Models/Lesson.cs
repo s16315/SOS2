@@ -7,5 +7,6 @@ namespace SOS.Models
     {
         public int Id {get; set;}
         public bool Replacement {get; set;}
+        public int CourseId {get; set;}
     }
 }

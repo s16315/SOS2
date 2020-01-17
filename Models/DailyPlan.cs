@@ -6,9 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SOS.Models
 {
     [Table("DailyPlans")]
-    public class DailyPlan
+    public class DailyPlan : Entity
     {
-        public int Id {get; set;}
         [Required]
         public int DayNoInWeek {get; set;}
         [Required]

@@ -1,0 +1,15 @@
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+  padding: 12px;
+}
+.cdk-column-Id {
+  width: 10%;
+}
+.cdk-column-Name {
+  width: 70%;
+}
+.cdk-column-action {
+  width: 20%;
+}
+.mat-table {
+  width: 100%;
+}

@@ -1,0 +1,25 @@
+<div class="title-group">
+  <h1 class="mat-h1">Nowa sala</h1>
+  <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+<div class="inner-wrapper">
+  <form [formGroup]="roomForm" (ngSubmit)="submitRoomForm()" novalidate>
+    <mat-card>
+      <div class="controlers-wrapper">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Nazwa sali" formControlName="roomName">
+          <mat-error *ngIf="handleError('roomName', 'required')">
+            Wprowadź nazwę <strong>sali</strong>!
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </mat-card>
+    <mat-card>
+      <div class="full-wrapper button-wrapper">
+        <div class="button-wrapper">
+          <button mat-flat-button color="warn">Zatwierdź</button>
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</div>

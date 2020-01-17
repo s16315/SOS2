@@ -5,14 +5,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SOS.Models
 {
     [Table("Courses")]
-    public class Course
+    public class Course : Entity
     {
-        public int Id {get; set;}
         [Required]
         [StringLength(255)]
         public string Name {get; set;}
-        public ICollection<Student> Students {get; set;}
-        public ICollection<Instructor> Instructors {get; set;}
+        public ICollection<StudentCourse> StudentCourses {get; set;}
+        public int InstructorId {get; set;}
+        public Instructor Instructor {get; set;}
         public ICollection<Lesson> Lessons {get; set;}
+        public int LanguageId {get; set;}
+        public Language Language {get; set;}
     }
 }

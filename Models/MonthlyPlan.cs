@@ -6,9 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SOS.Models
 {
     [Table("MonthlyPlans")]
-    public class MonthlyPlan
+    public class MonthlyPlan : Entity
     {
-        public int Id {get; set;}
         [Required]
         [StringLength(255)]
         public string Name {get; set;}  
