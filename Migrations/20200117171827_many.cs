@@ -188,16 +188,16 @@ namespace SOS.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     RoomId1 = table.Column<int>(nullable: true),
-                    Lesson01Id = table.Column<int>(nullable: false),
-                    Lesson02Id = table.Column<int>(nullable: false),
-                    Lesson03Id = table.Column<int>(nullable: false),
-                    Lesson04Id = table.Column<int>(nullable: false),
-                    Lesson05Id = table.Column<int>(nullable: false),
-                    Lesson06Id = table.Column<int>(nullable: false),
-                    Lesson07Id = table.Column<int>(nullable: false),
-                    Lesson08Id = table.Column<int>(nullable: false),
-                    Lesson09Id = table.Column<int>(nullable: false),
-                    Lesson10Id = table.Column<int>(nullable: false),
+                    Lesson01Id = table.Column<int>(nullable: true),
+                    Lesson02Id = table.Column<int>(nullable: true),
+                    Lesson03Id = table.Column<int>(nullable: true),
+                    Lesson04Id = table.Column<int>(nullable: true),
+                    Lesson05Id = table.Column<int>(nullable: true),
+                    Lesson06Id = table.Column<int>(nullable: true),
+                    Lesson07Id = table.Column<int>(nullable: true),
+                    Lesson08Id = table.Column<int>(nullable: true),
+                    Lesson09Id = table.Column<int>(nullable: true),
+                    Lesson10Id = table.Column<int>(nullable: true),
                     DailyPlanId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -214,61 +214,61 @@ namespace SOS.Migrations
                         column: x => x.Lesson01Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson02Id",
                         column: x => x.Lesson02Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson03Id",
                         column: x => x.Lesson03Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson04Id",
                         column: x => x.Lesson04Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson05Id",
                         column: x => x.Lesson05Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson06Id",
                         column: x => x.Lesson06Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson07Id",
                         column: x => x.Lesson07Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson08Id",
                         column: x => x.Lesson08Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson09Id",
                         column: x => x.Lesson09Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Lessons_Lesson10Id",
                         column: x => x.Lesson10Id,
                         principalTable: "Lessons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_DailyRoomPlans_Rooms_RoomId1",
                         column: x => x.RoomId1,
@@ -398,8 +398,8 @@ namespace SOS.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     LastUpdate = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false),
-                    InstructorId = table.Column<int>(nullable: false),
-                    LanguageId = table.Column<int>(nullable: false)
+                    InstructorId = table.Column<int>(nullable: true),
+                    LanguageId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -409,13 +409,13 @@ namespace SOS.Migrations
                         column: x => x.InstructorId,
                         principalTable: "Instructors",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Courses_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

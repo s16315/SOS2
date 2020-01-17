@@ -10,7 +10,7 @@ using SOS.Persistance;
 namespace SOS.Migrations
 {
     [DbContext(typeof(SosDBContext))]
-    [Migration("20200117141230_many")]
+    [Migration("20200117171827_many")]
     partial class many
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,9 +27,9 @@ namespace SOS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("InstructorId");
+                    b.Property<int?>("InstructorId");
 
-                    b.Property<int>("LanguageId");
+                    b.Property<int?>("LanguageId");
 
                     b.Property<DateTime>("LastUpdate");
 
@@ -77,25 +77,25 @@ namespace SOS.Migrations
 
                     b.Property<DateTime>("LastUpdate");
 
-                    b.Property<int>("Lesson01Id");
+                    b.Property<int?>("Lesson01Id");
 
-                    b.Property<int>("Lesson02Id");
+                    b.Property<int?>("Lesson02Id");
 
-                    b.Property<int>("Lesson03Id");
+                    b.Property<int?>("Lesson03Id");
 
-                    b.Property<int>("Lesson04Id");
+                    b.Property<int?>("Lesson04Id");
 
-                    b.Property<int>("Lesson05Id");
+                    b.Property<int?>("Lesson05Id");
 
-                    b.Property<int>("Lesson06Id");
+                    b.Property<int?>("Lesson06Id");
 
-                    b.Property<int>("Lesson07Id");
+                    b.Property<int?>("Lesson07Id");
 
-                    b.Property<int>("Lesson08Id");
+                    b.Property<int?>("Lesson08Id");
 
-                    b.Property<int>("Lesson09Id");
+                    b.Property<int?>("Lesson09Id");
 
-                    b.Property<int>("Lesson10Id");
+                    b.Property<int?>("Lesson10Id");
 
                     b.Property<int?>("RoomId1");
 
@@ -351,13 +351,11 @@ namespace SOS.Migrations
                 {
                     b.HasOne("SOS.Models.Instructor", "Instructor")
                         .WithMany()
-                        .HasForeignKey("InstructorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("InstructorId");
 
                     b.HasOne("SOS.Models.Language", "Language")
                         .WithMany()
-                        .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("LanguageId");
                 });
 
             modelBuilder.Entity("SOS.Models.DailyPlan", b =>
@@ -375,53 +373,43 @@ namespace SOS.Migrations
 
                     b.HasOne("SOS.Models.Lesson", "Lesson01")
                         .WithMany()
-                        .HasForeignKey("Lesson01Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("Lesson01Id");
 
                     b.HasOne("SOS.Models.Lesson", "Lesson02")
                         .WithMany()
-                        .HasForeignKey("Lesson02Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("Lesson02Id");
 
                     b.HasOne("SOS.Models.Lesson", "Lesson03")
                         .WithMany()
-                        .HasForeignKey("Lesson03Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("Lesson03Id");
 
                     b.HasOne("SOS.Models.Lesson", "Lesson04")
                         .WithMany()
-                        .HasForeignKey("Lesson04Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("Lesson04Id");
 
                     b.HasOne("SOS.Models.Lesson", "Lesson05")
                         .WithMany()
-                        .HasForeignKey("Lesson05Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("Lesson05Id");
 
                     b.HasOne("SOS.Models.Lesson", "Lesson06")
                         .WithMany()
-                        .HasForeignKey("Lesson06Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("Lesson06Id");
 
                     b.HasOne("SOS.Models.Lesson", "Lesson07")
                         .WithMany()
-                        .HasForeignKey("Lesson07Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("Lesson07Id");
 
                     b.HasOne("SOS.Models.Lesson", "Lesson08")
                         .WithMany()
-                        .HasForeignKey("Lesson08Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("Lesson08Id");
 
                     b.HasOne("SOS.Models.Lesson", "Lesson09")
                         .WithMany()
-                        .HasForeignKey("Lesson09Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("Lesson09Id");
 
                     b.HasOne("SOS.Models.Lesson", "Lesson10")
                         .WithMany()
-                        .HasForeignKey("Lesson10Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("Lesson10Id");
 
                     b.HasOne("SOS.Models.Room", "Room")
                         .WithMany()
