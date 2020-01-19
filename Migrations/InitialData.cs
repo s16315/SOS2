@@ -46,7 +46,6 @@ namespace SOS.Migrations
                     migrationBuilder.Sql("INSERT INTO WeeklyPlans (Name, MonthlyPlanId) VALUES ('" + week.ToString() + "', (SELECT ID FROM MonthlyPlans WHERE Name = 'Marzec'))");
                 }
             }
-            
         }
         public static void addRooms(MigrationBuilder migrationBuilder)
         {
